@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Caching;
-using My_shop.Core.Models;
+using My_Shop.Core.Models;
 
 namespace My_Shop.DataAccess.InMemory
 {
-    class ProductRepository
+    public class ProductRepository
     {
         ObjectCache cache = MemoryCache.Default;
         List<Product> products;
