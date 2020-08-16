@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace My_Shop.Services
 {
-    public class BasketService
+    public class BasketService :IBasketService
     {
         IRepository<Product> productContext;
         IRepository<Basket> basketContext;
