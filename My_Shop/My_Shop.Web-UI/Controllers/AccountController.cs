@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using My_Shop.Core.Contracts;
+using My_Shop.Core.Models;
 using My_Shop.Web_UI.Models;
 
 namespace My_Shop.Web_UI.Controllers
@@ -17,15 +19,11 @@ namespace My_Shop.Web_UI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IRepository<Customer> customerRepository;
 
-        public AccountController()
+        public AccountController(IRepository<Customer> CustomerRepository)
         {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            customerRepository = CustomerRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -91,6 +89,9 @@ namespace My_Shop.Web_UI.Controllers
             }
         }
 
+
+
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -103,6 +104,9 @@ namespace My_Shop.Web_UI.Controllers
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
+
+
+
 
         //
         // POST: /Account/VerifyCode
@@ -134,6 +138,9 @@ namespace My_Shop.Web_UI.Controllers
             }
         }
 
+
+
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -141,6 +148,9 @@ namespace My_Shop.Web_UI.Controllers
         {
             return View();
         }
+
+
+
 
         //
         // POST: /Account/Register
@@ -155,6 +165,23 @@ namespace My_Shop.Web_UI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Register customer account and link to newly created acc
+
+                    Customer customer = new Customer()
+                    {
+                        City = model.City,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        SecondName = model.SecondName,
+                        State = model.State,
+                        Street = model.Street,
+                        ZipCode = model.ZipCode,
+                        UserId = user.Id
+                    };
+
+                    customerRepository.Insert(customer);
+                    customerRepository.Commit();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -171,6 +198,10 @@ namespace My_Shop.Web_UI.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+
 
         //
         // GET: /Account/ConfirmEmail
