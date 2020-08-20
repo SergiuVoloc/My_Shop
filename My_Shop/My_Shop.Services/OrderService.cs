@@ -37,6 +37,22 @@ namespace My_Shop.Services
             orderContext.Insert(baseOrder);
             orderContext.Commit();
         }
+
+        public List<Order> GetListOfOrders()
+        {
+            return orderContext.Collection().ToList();
+        }
+
+        public Order GetOrder(string Id)
+        {
+            return orderContext.Find(Id);
+        }
+
+        public void UpdateOrder(Order updateOrder)
+        {
+            orderContext.Update(updateOrder);
+            orderContext.Commit();
+        }
     }
 }
 
