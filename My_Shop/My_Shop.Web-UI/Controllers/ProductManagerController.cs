@@ -11,6 +11,7 @@ using My_Shop.DataAccess.InMemory;
 
 namespace My_Shop.Web_UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductManagerController : Controller
     {
 
