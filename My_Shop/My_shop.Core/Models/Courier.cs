@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace My_Shop.Core.Models
 {
-    public class WishList
+    public class Courier
     {
     }
 }
