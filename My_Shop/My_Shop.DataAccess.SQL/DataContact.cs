@@ -27,4 +27,4 @@ namespace My_Shop.DataAccess.SQL
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Store> Stores { get; set; }
     }
-}
+} 
