@@ -21,5 +21,10 @@ namespace My_Shop.DataAccess.SQL
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders{ get; set; }
         public DbSet<OrderItem> OrderItems{ get; set; }
+        public DbSet<WishList> WishLists { get; set; }
+        public DbSet<Courier> Couriers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Store> Stores { get; set; }
     }
 }
