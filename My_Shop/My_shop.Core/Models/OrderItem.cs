@@ -10,8 +10,10 @@ namespace My_Shop.Core.Models
     public class OrderItem: BaseEntity
     {
         public string OrderId { get; set; }
-        public string ProductId { get; set; }
-        public string ProductName { get; set; }
+        public Order Order { get; set; }
+        public string ProductId { get; set; } 
+        public Product Product { get; set; }
+        public string ProductName { get; set; } // remove ProductName + Price + Image for DB Normalisation
         public decimal Price { get; set; }
         public string Image { get; set; }
         public int Quantity { get; set; }

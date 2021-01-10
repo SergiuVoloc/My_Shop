@@ -66,6 +66,7 @@ namespace My_Shop.Web_UI.Controllers
             {
                 Order order = new Order()
                 {
+                    UserId = customer.UserId,
                     FirstName = customer.FirstName,
                     SecondName = customer.SecondName,
                     City = customer.City,

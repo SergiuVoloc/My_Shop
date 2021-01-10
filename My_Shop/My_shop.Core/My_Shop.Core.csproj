@@ -52,6 +52,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Courier.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerAddress.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />

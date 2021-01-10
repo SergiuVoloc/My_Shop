@@ -15,7 +15,8 @@ namespace My_Shop.Core.Models
             this.OrderItems = new List<OrderItem>();
         }
 
-        public string FirstName { get; set; }
+        public string UserId { get; set; }
+        public string FirstName { get; set; } // remove FirstName + SecondName + Email for DB Normalisation
         public string SecondName { get; set; }
         public string Email { get; set; }
         public string Street { get; set; }
@@ -23,6 +24,7 @@ namespace My_Shop.Core.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string OrderStatus { get; set; }
+        public string ShippingCost { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 
 
