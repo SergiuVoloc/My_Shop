@@ -5,4 +5,4 @@
 
 
 # Database Relational Model
-![Screenshot_1](https://user-images.githubusercontent.com/38067667/101021738-f81e1200-3578-11eb-8644-bb57d48bca2a.png)
+![Screenshot_1](https://user-images.githubusercontent.com/38067667/104126884-c8c4a700-5367-11eb-9263-ac4f606c46f8.png)
