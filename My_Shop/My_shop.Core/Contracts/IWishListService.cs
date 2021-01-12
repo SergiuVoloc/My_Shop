@@ -9,7 +9,6 @@ namespace My_Shop.Core.Contracts
         void AddToWishList(HttpContextBase httpContext, string productId);
         void RemoveFromWishList(HttpContextBase httpContext, string itemId);
         List<WishListItemViewModel> GetWishListItems(HttpContextBase httpContext);
-        WishListSummaryViewModel GetWishListSummary(HttpContextBase httpContext);
         void ClearWishList(HttpContextBase httpContext);
     }
 }

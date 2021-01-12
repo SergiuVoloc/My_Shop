@@ -100,15 +100,15 @@ namespace My_Shop.Services
 
 
 
-        public void RemoveFromWishList(HttpContextBase httpContext, string itemId)      // CONTINUE FROM HERE
+        public void RemoveFromWishList(HttpContextBase httpContext, string itemId)      
         {
             WishList WishList = GetWishList(httpContext, true);
-            WishListItem item = WishList.WishListItems.FirstOrDefault(i=>i.Id==itemId);
+            WishList item = WishList.WishListItems.FirstOrDefault(i=>i.Id==itemId);
 
             if (item != null)
             {
                 WishList.WishListItems.Remove(item);
-                WishListContext.Commit();
+                wishListContext.Commit();
             }
         }
 
@@ -141,41 +141,12 @@ namespace My_Shop.Services
                 return new List<WishListItemViewModel>();
             }
         }
-        //return a total no of items of the items and total quantity in the WishList
-        public WishListSummaryViewModel GetWishListSummary(HttpContextBase httpContext)
-        {
-            WishList WishList = GetWishList(httpContext, false);
-            WishListSummaryViewModel model = new WishListSummaryViewModel(0,0);
-
-            if (WishList != null)
-            {
-                // if we have items in the WishList, we need to calculate how many items are in the WishList
-                // int? -> means we can store a non value
-                int? WishListCount = (from item in WishList.WishListItems
-                                    select item.Quantity).Sum();
-
-                decimal? WishListTotal = (from item in WishList.WishListItems
-                                        join p in productContext.Collection()
-                                        on item.ProductId equals p.Id
-                                        select item.Quantity * p.Price).Sum();
-
-                //assigning values to the model
-                model.WishListCount = WishListCount ?? 0; // ?? -> if `WishListcount` is null then return 0
-                model.WishListTotal = WishListTotal ?? decimal.Zero;
-
-                return model;
-            }
-            else
-            {
-                return model; // if the WishList is empty, return default constructor with 0 elemets
-            }
-        }
 
         public void ClearWishList(HttpContextBase httpContext)
         {
             WishList WishList = GetWishList(httpContext, false);
             WishList.WishListItems.Clear();
-            WishListContext.Commit();
+            wishListContext.Commit();
         }
 
     }
