@@ -1,6 +1,6 @@
 
 
-Note: These are queries for Oracle Database management. 
+Note: These are queries for Oracle Database implementation. 
 
 Author: Seriu Voloc
 
@@ -13,14 +13,14 @@ CREATE TABLE BasketItem
 	BasketId NUMBER(10) NOT NULL,
 	Quantity NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
-	CONSTRAINT BasketItemId PRIMARY KEY (Id)
+		CONSTRAINT BasketItemId PRIMARY KEY (Id)
 );
 
 
 CREATE TABLE Basket
 	( Id NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
-	CONSTRAINT BasketId PRIMARY KEY (Id)
+		CONSTRAINT BasketId PRIMARY KEY (Id)
 );
 
 CREATE TABLE Product
@@ -35,31 +35,112 @@ CREATE TABLE Product
 	Price NUMBER NOT NULL,
 	Stock VARCHAR2(50) NOT NULL,
 	Image VARCHAR2(50) NOT NULL,
-	CONSTRAINT ProductId PRIMARY KEY (Id)
+		CONSTRAINT ProductId PRIMARY KEY (Id)
 );
 
 
-	to test
+
+
+
+
 
 
 CREATE TABLE ProductCategory
 	( Id NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
 	Category VARCHAR2(50) NOT NULL,
-	CONSTRAINT BasketId PRIMARY KEY (Id)
+		CONSTRAINT ProductCategoryId PRIMARY KEY (Id)
 );
 
-CREATE TABLE ProductCategory
+CREATE TABLE Supplier
+	( Id NUMBER(10) NOT NULL,
+	Status VARCHAR2(50) NOT NULL,
+	CompanyId NUMBER(10) NOT NULL,
+		CONSTRAINT SupplierId PRIMARY KEY (Id)
+);
+
+CREATE TABLE Store
+	( Id NUMBER(10) NOT NULL,
+	Showroom VARCHAR2(50) NOT NULL,
+	CompanyId NUMBER(10) NOT NULL,
+		CONSTRAINT StoreId PRIMARY KEY (Id)
+);
+
+CREATE TABLE Company
+	( Id NUMBER(10) NOT NULL,
+	Name VARCHAR2(50) NOT NULL,
+	Adress VARCHAR2(50) NOT NULL,
+	Phone VARCHAR2(50) NOT NULL,
+	IBAN NUMBER(20) NOT NULL,
+	CompanyId NUMBER(10) NOT NULL,
+		CONSTRAINT CompanyId PRIMARY KEY (Id)
+);
+
+CREATE TABLE Customer
+	( Id NUMBER(10) NOT NULL,
+	CompanyId NUMBER(10) NOT NULL,
+	BasketId NUMBER(10) NOT NULL,
+	CustomerAddressId NUMBER(10) NOT NULL,
+	UserId VARCHAR2(50) NOT NULL,
+	FirstName VARCHAR2(50) NOT NULL,
+	SecondName VARCHAR2(50) NOT NULL,
+	Email VARCHAR2(50) NOT NULL,
+	CreatedAt DATE NOT NULL,
+		CONSTRAINT CustomerId PRIMARY KEY (Id)
+);
+
+CREATE TABLE WishList
 	( Id NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
-	Category VARCHAR2(50) NOT NULL,
-	CONSTRAINT BasketId PRIMARY KEY (Id)
+	ProductId NUMBER(10) NOT NULL,
+	CustomerId NUMBER(10) NOT NULL,
+	Quantity NUMBER(10) NOT NULL,
+		CONSTRAINT WishListId PRIMARY KEY (Id)
+);
+
+CREATE TABLE Courier
+	( Id NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	CompanyId NUMBER(10) NOT NULL,
+		CONSTRAINT CourierId PRIMARY KEY (Id)
+);
+
+
+CREATE TABLE OrderItem
+	( Id NUMBER(10) NOT NULL,
+	OrderId NUMBER(10) NOT NULL,
+	ProductId NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	Quantity NUMBER(10) NOT NULL,
+		CONSTRAINT OrderItemId PRIMARY KEY (Id)
 );
 
 
 
+CREATE TABLE CustomerAddress
+	( Id NUMBER(10) NOT NULL,
+	UserId NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	Country VARCHAR2(50) NOT NULL,
+	City VARCHAR2(50) NOT NULL,
+	Street VARCHAR2(50) NOT NULL,
+	ZipCode VARCHAR2(50) NOT NULL,
+		CONSTRAINT CustomerAddressId PRIMARY KEY (Id)
+);
 
 
+CREATE TABLE Оrder
+	( Id NUMBER(10) NOT NULL,
+	UserId NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	Country VARCHAR2(50) NOT NULL,
+	City VARCHAR2(50) NOT NULL,
+	Street VARCHAR2(50) NOT NULL,
+	ZipCode VARCHAR2(50) NOT NULL,
+	OrderStatus VARCHAR2(50) NOT NULL,
+	ShippingCost NUMBER(10) NOT NULL,
+		CONSTRAINT OrderId PRIMARY KEY (Id)
+);
 
 
 

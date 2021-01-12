@@ -24,7 +24,7 @@ namespace My_Shop.Core.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string OrderStatus { get; set; }
-        public string ShippingCost { get; set; }
+        public int ShippingCost { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 
 

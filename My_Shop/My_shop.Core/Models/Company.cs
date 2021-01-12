@@ -19,7 +19,7 @@ namespace My_Shop.Core.Models
         public ICollection<Supplier> Supplier { get; set; }
         public ICollection<Courier> Courier { get; set; }
 
-
+        //different approach
         //public List<Store> Store{ get; set; }
 
         public Company()
