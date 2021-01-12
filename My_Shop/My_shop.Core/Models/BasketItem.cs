@@ -10,7 +10,11 @@ namespace My_Shop.Core.Models
     public class BasketItem : BaseEntity
     {
         public string BasketId { get; set; }
+        public Basket Basket { get; set; }
+
         public string ProductId { get; set; }
+        public Product Product { get; set; }
+
         public int Quantity { get; set; }
 
     }

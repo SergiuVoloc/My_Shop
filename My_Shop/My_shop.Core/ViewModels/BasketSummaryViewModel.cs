@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace My_Shop.Core.ViewModels
 {
@@ -23,7 +19,6 @@ namespace My_Shop.Core.ViewModels
             this.BasketCount = basketCount;
             this.BasketTotal = basketTotal;
 
-           
         }
 
     }

@@ -46,12 +46,14 @@
     <Compile Include="Contracts\IBasketService.cs" />
     <Compile Include="Contracts\IOrderService.cs" />
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\IWishListService.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\BasketItem.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Courier.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerAddress.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="ViewModels\BasketSummaryViewModel.cs" />
     <Compile Include="ViewModels\ProductListViewModel.cs" />
     <Compile Include="ViewModels\ProductManagerViewModel.cs" />
+    <Compile Include="ViewModels\WishListItemViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

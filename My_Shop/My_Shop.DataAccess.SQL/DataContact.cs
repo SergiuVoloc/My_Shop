@@ -26,5 +26,7 @@ namespace My_Shop.DataAccess.SQL
         public DbSet<Company> Companies { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Store> Stores { get; set; }
+
+        public System.Data.Entity.DbSet<My_Shop.Core.ViewModels.WishListItemViewModel> WishListItemViewModels { get; set; }
     }
 } 

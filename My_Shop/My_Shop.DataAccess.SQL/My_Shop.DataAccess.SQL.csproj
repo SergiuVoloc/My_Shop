@@ -56,6 +56,18 @@
     <Compile Include="Migrations\202011212034349_Initial.designer.cs">
       <DependentUpon>202011212034349_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101101423504_10.01.21.cs" />
+    <Compile Include="Migrations\202101101423504_10.01.21.designer.cs">
+      <DependentUpon>202101101423504_10.01.21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101121332474_12.01_1.cs" />
+    <Compile Include="Migrations\202101121332474_12.01_1.designer.cs">
+      <DependentUpon>202101121332474_12.01_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101121458459_12.01_2.cs" />
+    <Compile Include="Migrations\202101121458459_12.01_2.designer.cs">
+      <DependentUpon>202101121458459_12.01_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLRepository.cs" />
@@ -73,6 +85,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011212034349_Initial.resx">
       <DependentUpon>202011212034349_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101101423504_10.01.21.resx">
+      <DependentUpon>202101101423504_10.01.21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101121332474_12.01_1.resx">
+      <DependentUpon>202101121332474_12.01_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101121458459_12.01_2.resx">
+      <DependentUpon>202101121458459_12.01_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
