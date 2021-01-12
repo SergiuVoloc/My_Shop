@@ -1,0 +1,15 @@
+insert into SupplyingCompany (
+    SuplCompID, 
+    SuplCompName,
+    Address,
+    Email,
+    Description,
+    Phone
+) values (
+    1,
+    'eMAG',
+    'Strada Petroșani nr44',
+    'eMAG@yahoo.com',
+    'eMAG este o companie din România',    
+    '0351342567'
+);

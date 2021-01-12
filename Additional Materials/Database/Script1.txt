@@ -1,0 +1,94 @@
+
+
+Note: These are queries for Oracle Database management. 
+
+Author: Seriu Voloc
+
+
+  *********** Creating Tables ***************
+
+CREATE TABLE BasketItem
+	( Id NUMBER(10) NOT NULL,
+	ProductId NUMBER(10) NOT NULL,
+	BasketId NUMBER(10) NOT NULL,
+	Quantity NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	CONSTRAINT BasketItemId PRIMARY KEY (Id)
+);
+
+
+CREATE TABLE Basket
+	( Id NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	CONSTRAINT BasketId PRIMARY KEY (Id)
+);
+
+CREATE TABLE Product
+	( Id NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	CategoryId NUMBER(10) NOT NULL,
+	SupplierId NUMBER(10) NOT NULL,
+	StoreId NUMBER(10) NOT NULL,
+	Name VARCHAR2(50) NOT NULL,
+	Description VARCHAR2(50) NOT NULL,
+	Specifications VARCHAR2(50) NOT NULL,
+	Price NUMBER NOT NULL,
+	Stock VARCHAR2(50) NOT NULL,
+	Image VARCHAR2(50) NOT NULL,
+	CONSTRAINT ProductId PRIMARY KEY (Id)
+);
+
+
+	to test
+
+
+CREATE TABLE ProductCategory
+	( Id NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	Category VARCHAR2(50) NOT NULL,
+	CONSTRAINT BasketId PRIMARY KEY (Id)
+);
+
+CREATE TABLE ProductCategory
+	( Id NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	Category VARCHAR2(50) NOT NULL,
+	CONSTRAINT BasketId PRIMARY KEY (Id)
+);
+
+
+
+
+
+
+
+
+
+
+       ************* FOREIGN KEYs ***************
+
+ALTER TABLE TabelName1 ADD ( CONSTRAINT denumire_FK 
+	FOREIGN KEY ( atributul_FK_T1 ) 
+	REFERENCES TabelName2( atributul_PK_T2 ) 
+);
+
+
+ALTER TABLE BasketItem ADD ( CONSTRAINT ProductId_BasketItem_FK 
+	FOREIGN KEY ( ProductId ) 
+	REFERENCES Product ( Id ) 
+);
+
+ALTER TABLE BasketItem ADD ( CONSTRAINT BasketItem_Basket_FK
+    FOREIGN KEY ( BasketId ) 
+	REFERENCES Basket ( Id ) 
+);
+
+
+
+
+
+
+
+
+
+

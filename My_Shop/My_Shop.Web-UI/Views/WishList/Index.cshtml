@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<My_Shop.Core.ViewModels.WishListItemViewModel>
 @{
-    ViewBag.Title = "Basket";
+    ViewBag.Title = "WishList";
 }
 
 <h2>My Wish List🌠</h2>
@@ -18,7 +18,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        
+
     </tr>
 
     @foreach (var item in Model)
@@ -46,8 +46,7 @@
     <tr>
         <td colspan="4" style="text-align:right"><strong>Basket Total</strong></td>
         <td>@String.Format("{0:c}", (from p in Model select p.Price * p.Quantity).Sum())</td>
-   
+
     </tr>
 
-</table>
 </table>
