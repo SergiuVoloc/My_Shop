@@ -80,8 +80,6 @@ INSERT ALL
 SELECT * FROM dual;
 
 
-
-
 INSERT ALL
   	INTO Supplier(Id, CompanyId, Status ) VALUES (1, 1, 'Approved')
 	INTO Supplier(Id, CompanyId, Status ) VALUES (2, 2, 'Approved')
@@ -121,4 +119,49 @@ INSERT ALL
 	INTO Courier (Id, CompanyId,  CreatedAt ) VALUES (4, 24, TO_DATE('01-JAN-2021', 'dd-MON-yyyy') )
 	INTO Courier (Id, CompanyId,  CreatedAt ) VALUES (5, 25, TO_DATE('01-JAN-2021', 'dd-MON-yyyy') )
 	INTO Courier (Id, CompanyId,  CreatedAt ) VALUES (6, 26, TO_DATE('01-JAN-2021', 'dd-MON-yyyy') )
+SELECT * FROM dual;
+
+
+
+INSERT ALL
+  	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+	      VALUES (1, 1, 1, 1, 'IPhone 12 Pro Max', 'Gold', 'Dual Sim eSim 128GB 5G Technology 6GB RAM', 1200, 'Yes', 'prod1.png', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (2, 1, 2, 1, 'Pixel 5', 'Black','128GB 5G Technology 8GB RAM', 800, 'Yes', 'prod2.png', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (3, 1, 3, 1, 'P40 Pro Plus', 'White Ceramic','Dual Sim 512GB 5G 8GB RAM', 1000, 'Yes', 'prod3.png', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (4, 1, 4, 1, 'Mi 10 ', 'Twilight Grey', '128GB 5G 8GB RAM', 650, 'Yes', 'prod4.png', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (5, 2, 14, 1, 'Oppo Watch', '45.5g (stainless steel), 11.4mm thickness', '8GB storage, no card slot', 200, 'Yes', 'prod5.png', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+	  	  VALUES (6, 2, 6, 2, 'LG Watch W7', '79g, 13mm thickness', '4GB 768MB RAM ', 260, 'Yes', 'prod6.png', TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (7, 2, 13, 2, 'Samsung Galaxy Watch3', '43g (45mm tt.), 11.1mm thickness', '8GB storage, no card slot', 333, 'Yes', 'prod7.png', TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (8, 2, 19, 2, 'Fossil Bronson Watch', 'Twist Smoke', 'Stainless Steel', 220, 'Yes', 'prod8.png', TO_DATE('04-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (9, 2, 20, 2, 'Fitbit Sense', 'advanced health smartwatch', 'stress management, heart health, SpO2, skin temperature & more', 280, 'Yes', 'prod9.png', TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (10, 3, 7, 2, 'Kindle Paperwhite', 'Now Waterproof with 2x the Storage', 'Digital Storage Capacity: 32 GB', 250, 'Yes', 'prod10.png', TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+	  	  VALUES (11, 3, 15, 3, 'Kobo Forma', 'Waterproof IPX8 - up to 60 mins in 2 metres of water', 'Supported 14 file formats supported natively', 250, 'Yes', 'prod11.png', TO_DATE('06-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (12, 3, 8, 3, 'PocketBook Touch Lux 4', 'Round the clock reading comfort', 'RAM 512 MB and a powerful 1 GHz processor', 200, 'Yes', 'prod12.png', TO_DATE('07-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (13, 4, 5, 3, 'OnePlus Buds', 'Set your music free', '30 hours of battery life', 99, 'Yes', 'prod13.png', TO_DATE('08-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (14, 4, 9, 3, 'JBL Reflect Flow', 'Up to 30 Hours Battery Life + Speed Charge', 'Ergonomic Fit, Waterproof', 150, 'Yes', 'prod14.png', TO_DATE('09-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (15, 4, 3, 3, 'HUAWEI FreeBuds Pro', 'Active noise cancellation, Call noise cancellation', 'Awarness mode,Voice mode', 199, 'Yes', 'prod15.png', TO_DATE('10-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+	  	  VALUES (16, 4, 1, 4, 'AirPods Pro', 'Magic like you’ve never heard', 'Amazing sound quality with Adaptive EQ', 250, 'Yes', 'prod16.png', TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (17, 5, 10, 4, 'ASUS ZenBook Duo UX481', '14” FHD NanoEdge Bezel Touch', 'Intel Core i7-10510U, GeForce MX250, 16GB RAM, 1TB PCIe SSD', 1450, 'Yes', 'prod17.png', TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (18, 5, 11, 4, 'Dell XPS 15 9500 15.6"', 'Intel Core i7-10750H 10th Gen ', '32GB DDR4 RAM 1TB SSD, 4K UHD+ (3840x2400) 500-NIT Touch NVIDIA Geforce GTX 1650 Ti 4GB GDDR6', 2300, 'Yes', 'prod18.png', TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (19, 5, 12, 4, 'Lenovo ThinkPad X1 Extreme', 'Touchscreen Notebook - 4K UHD - 3840 x 2160 - Intel Core i9 (10th Gen)', 'Octa-core (8 Core) 2.40 GHz - 32 GB RAM - 2 TB SSD', 3300, 'Yes', 'prod19.png', TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
+		  VALUES (20, 5, 18, 4, 'HP EliteBook 840 G7', 'IPS Display - 1.8 GHz Intel Core i7', 'Quad-Core - 16GB - 256GB SSD', 1600, 'Yes', 'prod20.png', TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
 SELECT * FROM dual;
