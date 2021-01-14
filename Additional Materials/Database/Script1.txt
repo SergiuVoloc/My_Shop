@@ -7,77 +7,64 @@ Author: Seriu Voloc
 
   *********** Creating Tables ***************
 
+CREATE TABLE Basket
+	( Id NUMBER CONSTRAINT BasketId PRIMARY KEY,
+	CreatedAt DATE NOT NULL
+);
+
+CREATE TABLE ProductCategory
+	( Id NUMBER CONSTRAINT ProductCategoryId PRIMARY KEY,
+	CreatedAt DATE NOT NULL,
+	Category VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE Company
+	( Id NUMBER CONSTRAINT CompanyId PRIMARY KEY,
+	Name VARCHAR2(50) NOT NULL,
+	Adress VARCHAR2(50) NOT NULL,
+	Phone VARCHAR2(50) NOT NULL,
+	IBAN NUMBER(20) NOT NULL
+);
+
+
 CREATE TABLE BasketItem
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT BasketItemId PRIMARY KEY ,
 	ProductId NUMBER(10) NOT NULL,
 	BasketId NUMBER(10) NOT NULL,
 	Quantity NUMBER(10) NOT NULL,
-	CreatedAt DATE NOT NULL,
-		CONSTRAINT BasketItemId PRIMARY KEY (Id)
-);
-
-
-CREATE TABLE Basket
-	( Id NUMBER(10) NOT NULL,
-	CreatedAt DATE NOT NULL,
-		CONSTRAINT BasketId PRIMARY KEY (Id)
+	CreatedAt DATE NOT NULL
 );
 
 CREATE TABLE Product
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT ProductId PRIMARY KEY ,
 	CreatedAt DATE NOT NULL,
 	CategoryId NUMBER(10) NOT NULL,
 	SupplierId NUMBER(10) NOT NULL,
 	StoreId NUMBER(10) NOT NULL,
 	Name VARCHAR2(50) NOT NULL,
-	Description VARCHAR2(50) NOT NULL,
-	Specifications VARCHAR2(50) NOT NULL,
+	Description VARCHAR2(1000) NOT NULL,
+	Specifications VARCHAR2(1000) NOT NULL,
 	Price NUMBER NOT NULL,
 	Stock VARCHAR2(50) NOT NULL,
-	Image VARCHAR2(50) NOT NULL,
-		CONSTRAINT ProductId PRIMARY KEY (Id)
+	Image VARCHAR2(50) NOT NULL
 );
 
-
-
-
-
-
-
-
-CREATE TABLE ProductCategory
-	( Id NUMBER(10) NOT NULL,
-	CreatedAt DATE NOT NULL,
-	Category VARCHAR2(50) NOT NULL,
-		CONSTRAINT ProductCategoryId PRIMARY KEY (Id)
-);
 
 CREATE TABLE Supplier
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT SupplierId PRIMARY KEY ,
 	Status VARCHAR2(50) NOT NULL,
-	CompanyId NUMBER(10) NOT NULL,
-		CONSTRAINT SupplierId PRIMARY KEY (Id)
+	CompanyId NUMBER(10) NOT NULL	
 );
 
 CREATE TABLE Store
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT StoreId PRIMARY KEY ,
 	Showroom VARCHAR2(50) NOT NULL,
-	CompanyId NUMBER(10) NOT NULL,
-		CONSTRAINT StoreId PRIMARY KEY (Id)
+	CompanyId NUMBER(10) NOT NULL
 );
 
-CREATE TABLE Company
-	( Id NUMBER(10) NOT NULL,
-	Name VARCHAR2(50) NOT NULL,
-	Adress VARCHAR2(50) NOT NULL,
-	Phone VARCHAR2(50) NOT NULL,
-	IBAN NUMBER(20) NOT NULL,
-	CompanyId NUMBER(10) NOT NULL,
-		CONSTRAINT CompanyId PRIMARY KEY (Id)
-);
 
 CREATE TABLE Customer
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT CustomerId PRIMARY KEY ,
 	CompanyId NUMBER(10) NOT NULL,
 	BasketId NUMBER(10) NOT NULL,
 	CustomerAddressId NUMBER(10) NOT NULL,
@@ -85,52 +72,46 @@ CREATE TABLE Customer
 	FirstName VARCHAR2(50) NOT NULL,
 	SecondName VARCHAR2(50) NOT NULL,
 	Email VARCHAR2(50) NOT NULL,
-	CreatedAt DATE NOT NULL,
-		CONSTRAINT CustomerId PRIMARY KEY (Id)
+	CreatedAt DATE NOT NULL
 );
 
 CREATE TABLE WishList
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT WishListId PRIMARY KEY ,
 	CreatedAt DATE NOT NULL,
 	ProductId NUMBER(10) NOT NULL,
 	CustomerId NUMBER(10) NOT NULL,
-	Quantity NUMBER(10) NOT NULL,
-		CONSTRAINT WishListId PRIMARY KEY (Id)
+	Quantity NUMBER(10) NOT NULL
 );
 
 CREATE TABLE Courier
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT CourierId PRIMARY KEY ,
 	CreatedAt DATE NOT NULL,
-	CompanyId NUMBER(10) NOT NULL,
-		CONSTRAINT CourierId PRIMARY KEY (Id)
+	CompanyId NUMBER(10) NOT NULL
 );
 
 
 CREATE TABLE OrderItem
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT OrderItemId PRIMARY KEY ,
 	OrderId NUMBER(10) NOT NULL,
 	ProductId NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
-	Quantity NUMBER(10) NOT NULL,
-		CONSTRAINT OrderItemId PRIMARY KEY (Id)
+	Quantity NUMBER(10) NOT NULL		
 );
 
 
-
 CREATE TABLE CustomerAddress
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT CustomerAddressId PRIMARY KEY ,
 	UserId NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
 	Country VARCHAR2(50) NOT NULL,
 	City VARCHAR2(50) NOT NULL,
 	Street VARCHAR2(50) NOT NULL,
-	ZipCode VARCHAR2(50) NOT NULL,
-		CONSTRAINT CustomerAddressId PRIMARY KEY (Id)
+	ZipCode VARCHAR2(50) NOT NULL
 );
 
 
 CREATE TABLE Оrder
-	( Id NUMBER(10) NOT NULL,
+	( Id NUMBER CONSTRAINT OrderId PRIMARY KEY ,
 	UserId NUMBER(10) NOT NULL,
 	CreatedAt DATE NOT NULL,
 	Country VARCHAR2(50) NOT NULL,
@@ -138,32 +119,123 @@ CREATE TABLE Оrder
 	Street VARCHAR2(50) NOT NULL,
 	ZipCode VARCHAR2(50) NOT NULL,
 	OrderStatus VARCHAR2(50) NOT NULL,
-	ShippingCost NUMBER(10) NOT NULL,
-		CONSTRAINT OrderId PRIMARY KEY (Id)
+	ShippingCost NUMBER(10) NOT NULL
 );
 
 
 
 
 
-       ************* FOREIGN KEYs ***************
-
-ALTER TABLE TabelName1 ADD ( CONSTRAINT denumire_FK 
-	FOREIGN KEY ( atributul_FK_T1 ) 
-	REFERENCES TabelName2( atributul_PK_T2 ) 
-);
 
 
-ALTER TABLE BasketItem ADD ( CONSTRAINT ProductId_BasketItem_FK 
+
+
+   ****************** FOREIGN KEYs *********************
+
+
+ALTER TABLE BasketItem ADD ( CONSTRAINT Product_BasketItem_FK 
 	FOREIGN KEY ( ProductId ) 
 	REFERENCES Product ( Id ) 
+	ON DELETE CASCADE
 );
 
 ALTER TABLE BasketItem ADD ( CONSTRAINT BasketItem_Basket_FK
-    FOREIGN KEY ( BasketId ) 
+    	FOREIGN KEY ( BasketId ) 
 	REFERENCES Basket ( Id ) 
+	ON DELETE CASCADE
 );
 
+ALTER TABLE Product ADD ( CONSTRAINT Category_Product_FK
+	FOREIGN KEY ( CategoryId )
+	REFERENCES ProductCategory(Id)
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Product ADD ( CONSTRAINT Store_Product_FK
+	FOREIGN KEY ( StoreId )
+	REFERENCES Store(Id)
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Supplier ADD ( CONSTRAINT Supplier_Company_FK 
+	FOREIGN KEY ( CompanyId ) 
+	REFERENCES Company( Id ) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Store ADD ( CONSTRAINT Store_Company_FK 
+	FOREIGN KEY ( CompanyId ) 
+	REFERENCES Company( Id ) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Courier ADD ( CONSTRAINT Courier_Company_FK 
+	FOREIGN KEY ( CompanyId ) 
+	REFERENCES Company( Id ) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE WishList ADD ( CONSTRAINT WishList_Product_FK 
+	FOREIGN KEY ( ProductId ) 
+	REFERENCES Product ( Id) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE WishList ADD ( CONSTRAINT WishList_Customer_FK 
+	FOREIGN KEY ( CustomerId ) 
+	REFERENCES Customer ( Id) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Customer ADD ( CONSTRAINT Customer_Basket_FK 
+	FOREIGN KEY ( BasketId ) 
+	REFERENCES Basket ( Id ) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Customer ADD ( CONSTRAINT Customer_Address_FK 
+	FOREIGN KEY ( CustomerAddressId ) 
+	REFERENCES CustomerAddress ( Id) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE Оrder ADD ( CONSTRAINT Order_Customer_FK 
+	FOREIGN KEY ( UserId ) 
+	REFERENCES Customer ( Id ) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE CustomerAddress ADD ( CONSTRAINT Address_Customer_FK 
+	FOREIGN KEY ( UserId ) 
+	REFERENCES Customer ( Id ) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE OrderItem ADD ( CONSTRAINT OrderItem_Order_FK 
+	FOREIGN KEY ( OrderId ) 
+	REFERENCES Оrder ( Id) 
+	ON DELETE CASCADE
+);
+
+ALTER TABLE OrderItem ADD ( CONSTRAINT OrderItem_Product_FK 
+	FOREIGN KEY ( ProductId ) 
+	REFERENCES Product ( Id) 
+	ON DELETE CASCADE
+);
+
+
+
+ALTER TABLE Product ADD ( CONSTRAINT Supplier_Product_FK
+	FOREIGN KEY ( SupplierId)
+	REFERENCES Supplier(Id)
+	ON DELETE CASCADE
+);
+
+
+  ************ ON CASCADE DELETE explanation ****************
+ Tables: Product and Supplier
+Because of the cascade delete, when a record in the supplier table 
+is deleted, all records in the products table will also be deleted that have the same supplier_id value.
 
 
 
