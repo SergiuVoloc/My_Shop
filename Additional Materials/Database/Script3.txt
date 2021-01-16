@@ -1,0 +1,131 @@
+
+Note: These are queries for Oracle Database implementation.
+     
+
+Author: Seriu Voloc
+
+
+
+
+   *********** Data Interogation ***************	
+
+
+1. Să se afișeze numele și descrierea produsului cu prețul cel mai mic:
+
+    SELECT Name, Description, Price FROM Product WHERE Price = (select min(Price) from Product );
+
+
+2. Să se afișeze Denumirea, descrierea, specificările, prețul și diponibilitatea stocului produselor care corespund comaniei Huawei. 
+
+    select p.Name, p.Description, p.Specifications, p.Price, p.Stock, c.Name as Company_Name 
+    from product p inner join supplier s
+    on p.SupplierId = s.Id
+    inner join company c
+    on s.CompanyId = c.Id and c.Name like 'Huawei%';
+
+
+3. Să se afle și afișeze prețul mediu al produselor Apple din magazin.
+
+    select avg(price) from ( select p.Name, p.Description, p.Specifications, p.Price, p.Stock, c.Name as Company_Name 
+    from product p inner join supplier s
+    on p.SupplierId = s.Id
+    inner join company c
+    on s.CompanyId = c.Id and c.Name like 'Huawei%' )
+
+
+4. Să se afișeze denumirea și prețul crescător ar produselor care fac parte din categoria SmartPhones și au un preț mai maic de 1100$:
+
+    select p.name, p.price, pc.category 
+    from product p inner join ProductCategory pc 
+    on pc.Id = p.CategoryId where p.price < 1100
+    and pc.Category like 'SmartPhones%' order by price
+
+
+5. Să se afișeze toate Comenzile care s-au făcut în intervalul 1 ianuarie - 6 ianuarie și au un status de 'Order Completed'
+
+    SELECT * FROM Оrder o
+    WHERE o.CreatedAt >= TO_DATE('01-JAN-2021', 'dd-MON-yyyy')
+    AND o.CreatedAt <= TO_DATE('06-JAN-2021', 'dd-MON-yyyy') 
+    and orderstatus like 'Order Completed%'
+
+
+6. Să se găsească clienții care au adăugat mai mult de 1 produse în o coșul de cumpărături și să se afișeze anume câte produse au.
+
+    select c.firstname, c.secondname, bi.quantity  as Quantity_Of_Products
+    from basketItem bi inner join customer c 
+    on c.BasketId = bi.BasketId where bi.Quantity > 1
+    
+
+7. Să se afișeze filialele companiei și detaliice acestora.
+
+    select c.Name, c.Adress, c.Phone, c.IBAN, s.Showroom
+    from company c inner join store s
+    on c.Id = s.CompanyId
+
+
+8. Să se afișeze numele și adresa cumpărătorului care are cele mai multe produse în wish list și numărul acesora.
+
+    select c.firstname, c.secondname, W.quantity  as no_products
+    from wishlist w inner join customer c 
+    on c.Id = w.CustomerId where w.quantity = ( select max(quantity) from wishlist)
+
+
+
+9. Afisati în ordine ascendentă denumirea frunizorilor
+ 
+    select c.Name, c.Adress
+    from company c inner join supplier s
+    on c.Id = s.CompanyId
+    order by Name asc
+
+
+10. Să se afișeze suma produselor cumpărate din cadrul magazinului până la ziua curentă.
+
+    
+    select sum(Quantity) as Total_no_items from OrderItem 
+
+
+
+11. Să se afișeze numele și prenumele cumpărătorilor din orașul BRIGHTON + adresa acestora fără a se repeta .  
+
+    SELECT DISTINCT c.FirstName, c.SecondName, ca.Country, ca.City, ca.Street, ca.Zipcode 
+    FROM customer c inner join CustomerAddress ca
+    on c.Id = ca.UserId
+    WHERE City = 'BRIGHTON';
+
+
+12. Să se afișeze vategoria produsului Samsung Galaxy Watch3
+
+    select p.Name, pc.Category from ProductCategory pc 
+    inner join product p 
+    on p.CategoryId = pc.Id 
+    where p.Name like '%Samsung Galaxy Watch3%' 
+
+
+13. Pentru fiecare categorie să se afișeze prețul și numele celui mai scump produs.
+
+    select cat.category as Category, max(p.price) as Max_Price
+    from ProductCategory cat inner join product p
+    on p.CategoryId = cat.Id
+    group by cat.category
+
+
+14. Afișați e-mailrile utilizatorilor care nu au cumpărat produse Apple:
+
+    select distinct c.Email, p.Name from Customer c
+    inner join BasketItem bi
+    on c.BasketId = bi.BasketId
+        inner join product p
+        on bi.ProductId = p.Id
+        where p.Name not like '%Apple%'
+        
+
+15. Să se afișeze toate companiile care se ocupă de curiereat.
+
+    select Name, Adress, Phone, Iban from company 
+    right join courier cr
+    on company.Id = cr.CompanyId    
+        
+        
+        
+        

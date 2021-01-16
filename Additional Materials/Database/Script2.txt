@@ -125,7 +125,7 @@ SELECT * FROM dual;
 
 INSERT ALL
   	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
-	      VALUES (1, 1, 1, 1, 'IPhone 12 Pro Max', 'Gold', 'Dual Sim eSim 128GB 5G Technology 6GB RAM', 1200, 'Yes', 'prod1.png', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	      VALUES (1, 1, 1, 1, 'Apple IPhone 12 Pro Max', 'Gold', 'Dual Sim eSim 128GB 5G Technology 6GB RAM', 1200, 'Yes', 'prod1.png', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
 	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
 		  VALUES (2, 1, 2, 1, 'Pixel 5', 'Black','128GB 5G Technology 8GB RAM', 800, 'Yes', 'prod2.png', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
 	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
@@ -155,7 +155,7 @@ INSERT ALL
 	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
 		  VALUES (15, 4, 3, 3, 'HUAWEI FreeBuds Pro', 'Active noise cancellation, Call noise cancellation', 'Awarness mode,Voice mode', 199, 'Yes', 'prod15.png', TO_DATE('10-JAN-2021', 'dd-MON-yyyy'))
   	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
-	  	  VALUES (16, 4, 1, 4, 'AirPods Pro', 'Magic like you’ve never heard', 'Amazing sound quality with Adaptive EQ', 250, 'Yes', 'prod16.png', TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
+	  	  VALUES (16, 4, 1, 4, 'Apple AirPods Pro', 'Magic like you’ve never heard', 'Amazing sound quality with Adaptive EQ', 250, 'Yes', 'prod16.png', TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
 	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
 		  VALUES (17, 5, 10, 4, 'ASUS ZenBook Duo UX481', '14” FHD NanoEdge Bezel Touch', 'Intel Core i7-10510U, GeForce MX250, 16GB RAM, 1TB PCIe SSD', 1450, 'Yes', 'prod17.png', TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
 	INTO Product(Id, CategoryId, SupplierId, StoreId, Name, Description, Specifications, Price, Stock, Image, CreatedAt ) 
@@ -198,6 +198,29 @@ SELECT * FROM dual;
 
 
 
+INSERT ALL
+  	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (1,  1,  1, 'Olivia ', 'Carter', 'OliviaCarter@gmail.com', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (2,  2,  2, 'Amelia ', 'Campbell', 'AmeliaCampbell@gmail.com', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (3,  3,  3, 'Isla ', 'Butler', 'IslaButler@gmail.com', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (4,  4,  4, 'Ava ', 'Burton', 'AvaBurton@gmail.com', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (5,  5,  5, 'Emily ', 'Brown', 'EmilyBrown@gmail.com', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (6,  6,  6, 'Isabella ', 'Brooks', 'BrooksIsabellaBrooks@gmail.com', TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (7,  7,  7, 'Mia ', 'Bradley', 'MiaBradley@gmail.com', TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (8,  8,  8, 'Poppy ', 'Booth', 'PoppyBooth@gmail.com', TO_DATE('04-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (9,  9,  9, 'Ella ', 'Bennett', 'EllaBennett@gmail.com', TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (10, 10, 10,'Lily ', 'Bell', 'LilyBell@gmail.com',  TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (11, 11, 11,'Muhammad ', 'Barnes', 'MuhammadBarnes@gmail.com',  TO_DATE('06-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (12, 12, 12,'Charlie ', 'Barker', 'CharlieBarker@gmail.com',  TO_DATE('07-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (13, 13, 13,'Oscar ', 'Ball', 'OscarBall@gmail.com',  TO_DATE('08-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (14, 14, 14,'Leo ', 'Baker', 'LeoBaker@gmail.com',  TO_DATE('09-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (15, 15, 15,'Jacob ', 'Bailey', 'JacobBailey@gmail.com',  TO_DATE('10-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (16, 16, 16,'Jack ', 'Atkinson', 'JackAtkinson@gmail.com',  TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (17, 17, 17,'Noah ', 'Armstrong', 'NoahArmstrong@gmail.com',  TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (18, 18, 18,'George ', 'Anderson', 'GeorgeAnderson@gmail.com',  TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (19, 19, 19,'Harry ', 'Allen', 'HarryAllen@gmail.com',  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+	INTO Customer(Id, BasketId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (20, 20, 20,'Oliver ', 'Adams', 'OliverAdams@gmail.com',  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+SELECT * FROM dual;
+
 
 
 INSERT ALL
@@ -225,32 +248,6 @@ SELECT * FROM dual;
 
 
 
-
-
-INSERT ALL
-  	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (1,  1,  1,  1, 'Olivia ', 'Carter', 'OliviaCarter@gmail.com', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (2,  2,  2,  2, 'Amelia ', 'Campbell', 'AmeliaCampbell@gmail.com', TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (3,  3,  3,  3, 'Isla ', 'Butler', 'IslaButler@gmail.com', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (4,  4,  4,  4, 'Ava ', 'Burton', 'AvaBurton@gmail.com', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (5,  5,  5,  5, 'Emily ', 'Brown', 'EmilyBrown@gmail.com', TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
-  	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (6,  6,  6,  6, 'Isabella ', 'Brooks', 'BrooksIsabellaBrooks@gmail.com', TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (7,  7,  7,  7, 'Mia ', 'Bradley', 'MiaBradley@gmail.com', TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (8,  8,  8,  8, 'Poppy ', 'Booth', 'PoppyBooth@gmail.com', TO_DATE('04-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (9,  9,  9,  9, 'Ella ', 'Bennett', 'EllaBennett@gmail.com', TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (10, 10, 10, 10,'Lily ', 'Bell', 'LilyBell@gmail.com',  TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
-  	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (11, 11, 11, 11,'Muhammad ', 'Barnes', 'MuhammadBarnes@gmail.com',  TO_DATE('06-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (12, 12, 12, 12,'Charlie ', 'Barker', 'CharlieBarker@gmail.com',  TO_DATE('07-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (13, 13, 13, 13,'Oscar ', 'Ball', 'OscarBall@gmail.com',  TO_DATE('08-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (14, 14, 14, 14,'Leo ', 'Baker', 'LeoBaker@gmail.com',  TO_DATE('09-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (15, 15, 15, 15,'Jacob ', 'Bailey', 'JacobBailey@gmail.com',  TO_DATE('10-JAN-2021', 'dd-MON-yyyy'))
-  	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (16, 16, 16, 16,'Jack ', 'Atkinson', 'JackAtkinson@gmail.com',  TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (17, 17, 17, 17,'Noah ', 'Armstrong', 'NoahArmstrong@gmail.com',  TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (18, 18, 18, 18,'George ', 'Anderson', 'GeorgeAnderson@gmail.com',  TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (19, 19, 19, 19,'Harry ', 'Allen', 'HarryAllen@gmail.com',  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
-	INTO Customer(Id, BasketId, CustomerAddressId, UserId, FirstName, SecondName, Email, CreatedAt ) VALUES (20, 20, 20, 20,'Oliver ', 'Adams', 'OliverAdams@gmail.com',  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
-SELECT * FROM dual;
-
-
 INSERT ALL
   	INTO WishList (Id, ProductId, CustomerId, Quantity, CreatedAt ) VALUES (1,  1, 1,  1, TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
 	INTO WishList (Id, ProductId, CustomerId, Quantity, CreatedAt ) VALUES (2,  2, 2,  2, TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
@@ -273,3 +270,63 @@ INSERT ALL
 	INTO WishList (Id, ProductId, CustomerId, Quantity, CreatedAt ) VALUES (19, 19, 19, 1,  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
 	INTO WishList (Id, ProductId, CustomerId, Quantity, CreatedAt ) VALUES (20, 20, 20, 1,  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
 SELECT * FROM dual;
+
+
+																											
+
+
+INSERT ALL
+  	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (1,  1, 'United Kingdom', 'BRIGHTON', '340 New Road Street', 'BN96 0OX', 'Order Completed', 15, TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (2,  2, 'United Kingdom', 'MANCHESTER', '80 West Street', 'M69 4OC', 'Order Completed', 25,  TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (3,  3, 'United Kingdom', 'MILTON KEYNES', '36 Main Street', 'MK86 8CI', 'Order Completed', 25,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (4,  4, 'United Kingdom', 'NORTHAMPTON', '9233 King Street', 'NN75 6OM', 'Order Shipped', 15,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (5,  5, 'United Kingdom', 'DARLINGTON', '34 Springfield Road', 'DL66 3EP', 'Order Shipped', 12,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (6,  6, 'United Kingdom', 'DERBY', '22 Richmond Road', 'DE53 8XS', 'Order Completed', 10,  TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (7,  7, 'United Kingdom', 'HUDDERSFIELD', '83 Victoria Street', 'HD92 3ZE', 'Order Completed', 7,  TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (8,  8, 'United Kingdom', 'OUTER HEBRIDES', '78 Albert Road', 'HS17 1BA', 'Order Shipped', 10,  TO_DATE('04-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (9,  9, 'United Kingdom', 'HEMEL HEMPSTEAD', '39 Kings Road', 'HP35 4IK', 'Order Completed', 17,  TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (10, 10, 'United Kingdom', 'TELFORD', '441 Stanley Road', 'TF99 4VN', 'Order Shipped', 12,  TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (11, 11, 'United Kingdom', 'LEEDS', '98 Alexander Road', 'LS48 6AZ', 'Order Shipped', 15, TO_DATE('06-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (12, 12, 'United Kingdom', 'WAKEFIELD', '32 Victoria Street', 'WF99 7XI', 'Order Shipped', 10,  TO_DATE('07-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (13, 13, 'United Kingdom', 'GALASHIELS', '3 Richmond Road', 'TD31 2IA', 'Order Shipped', 12,  TO_DATE('08-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (14, 14, 'United Kingdom', 'BLACKBURN', '9671 The Avenue', 'BB41 9ST', 'Order Shipped', 17,  TO_DATE('09-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (15, 15, 'United Kingdom', 'BRIGHTON', '86 St. John’s Road', 'BN47 7EG', 'Order Shipped', 8,  TO_DATE('10-JAN-2021', 'dd-MON-yyyy'))
+  	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (16, 16, 'United Kingdom', 'CHESTER', '84 Church Road', 'CH23 9OB', 'Order Shipped', 18, TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (17, 17, 'United Kingdom', 'READING', '47 Queen Street', 'RG46 4JE', 'Order Completed', 15, TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (18, 18, 'United Kingdom', 'CARDIFF', '83 Alexander Road', 'CF72 0CH', 'Order Completed', 20, TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (19, 19, 'United Kingdom', 'LUTON', '9259 King Street', 'LU43 2PK', 'Order Completed', 15, TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+	INTO Оrder (Id, UserId, Country, City, Street, ZipCode, OrderStatus, ShippingCost, CreatedAt ) VALUES (20, 20, 'United Kingdom', 'CLEVELAND', '9504 Park Road', 'TS3 6IS', 'Order Completed', 20, TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+SELECT * FROM dual;
+
+
+
+INSERT ALL
+  	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (1,  1,  1,  1,  TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (2,  2,  2,  1,  TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (3,  3,  3,  1,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (4,  4,  4,  2,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (5,  5,  5,  1,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+  	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (6,  6,  6,  2,  TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (7,  7,  7,  1,  TO_DATE('03-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (8,  8,  8,  1,  TO_DATE('04-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (9,  9,  9,  3,  TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (10, 10, 10, 2,  TO_DATE('05-JAN-2021', 'dd-MON-yyyy'))
+  	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (11, 11, 11, 3,  TO_DATE('06-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (12, 12, 12, 1,  TO_DATE('07-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (13, 13, 13, 2,  TO_DATE('08-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (14, 14, 14, 2,  TO_DATE('09-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (15, 15, 15, 1,  TO_DATE('10-JAN-2021', 'dd-MON-yyyy'))
+  	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (16, 16, 16, 1,  TO_DATE('11-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (17, 17, 17, 1,  TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (18, 18, 18, 1,  TO_DATE('12-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (19, 19, 19, 1,  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (20, 20, 20, 1,  TO_DATE('13-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (21, 15, 1,  2,  TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (22, 20, 2,  1,  TO_DATE('01-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (23, 2,  3,  3,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (24, 7,  4,  1,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+	INTO OrderItem (Id, OrderId, ProductId, Quantity, CreatedAt ) VALUES (25, 10, 5,  2,  TO_DATE('02-JAN-2021', 'dd-MON-yyyy'))
+SELECT * FROM dual;
+
+
+																																															

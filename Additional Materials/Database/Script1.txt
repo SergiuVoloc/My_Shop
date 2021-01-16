@@ -66,7 +66,6 @@ CREATE TABLE Store
 CREATE TABLE Customer
 	( Id NUMBER CONSTRAINT CustomerId PRIMARY KEY ,
 	BasketId NUMBER(10) NOT NULL,
-	CustomerAddressId NUMBER(10) NOT NULL,
 	UserId NUMBER NOT NULL,
 	FirstName VARCHAR2(50) NOT NULL,
 	SecondName VARCHAR2(50) NOT NULL,
@@ -89,18 +88,9 @@ CREATE TABLE Courier
 );
 
 
-CREATE TABLE OrderItem
-	( Id NUMBER CONSTRAINT OrderItemId PRIMARY KEY ,
-	OrderId NUMBER(10) NOT NULL,
-	ProductId NUMBER(10) NOT NULL,
-	CreatedAt DATE NOT NULL,
-	Quantity NUMBER(10) NOT NULL		
-);
-
-
 CREATE TABLE CustomerAddress
 	( Id NUMBER CONSTRAINT CustomerAddressId PRIMARY KEY ,
-	UserId NUMBER(10) NOT NULL,
+	UserId NUMBER NOT NULL,
 	Country VARCHAR2(50) NOT NULL,
 	City VARCHAR2(50) NOT NULL,
 	Street VARCHAR2(50) NOT NULL,
@@ -119,6 +109,15 @@ CREATE TABLE Оrder
 	OrderStatus VARCHAR2(50) NOT NULL,
 	ShippingCost NUMBER(10) NOT NULL
 );
+
+CREATE TABLE OrderItem
+	( Id NUMBER CONSTRAINT OrderItemId PRIMARY KEY ,
+	OrderId NUMBER(10) NOT NULL,
+	ProductId NUMBER(10) NOT NULL,
+	CreatedAt DATE NOT NULL,
+	Quantity NUMBER(10) NOT NULL		
+);
+
 
 
 
@@ -191,11 +190,6 @@ ALTER TABLE Customer ADD ( CONSTRAINT Customer_Basket_FK
 	ON DELETE CASCADE
 );
 
-ALTER TABLE Customer ADD ( CONSTRAINT Customer_Address_FK 
-	FOREIGN KEY ( CustomerAddressId ) 
-	REFERENCES CustomerAddress ( Id) 
-	ON DELETE CASCADE
-);
 
 ALTER TABLE Оrder ADD ( CONSTRAINT Order_Customer_FK 
 	FOREIGN KEY ( UserId ) 
