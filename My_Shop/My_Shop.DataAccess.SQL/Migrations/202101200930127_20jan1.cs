@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _100121 : DbMigration
+    public partial class _20jan1 : DbMigration
     {
         public override void Up()
         {
@@ -28,6 +28,42 @@
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(maxLength: 20),
+                        Description = c.String(),
+                        Specifications = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Category = c.String(),
+                        Stock = c.String(),
+                        Image = c.String(),
+                        CategoryId = c.String(),
+                        SupplierId = c.String(maxLength: 128),
+                        StoreId = c.String(maxLength: 128),
+                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
+                        ProductCategory_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ProductCategories", t => t.ProductCategory_Id)
+                .ForeignKey("dbo.Stores", t => t.StoreId)
+                .ForeignKey("dbo.Suppliers", t => t.SupplierId)
+                .Index(t => t.SupplierId)
+                .Index(t => t.StoreId)
+                .Index(t => t.ProductCategory_Id);
+            
+            CreateTable(
+                "dbo.ProductCategories",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Category = c.String(),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id);
@@ -154,11 +190,24 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.WishListItemViewModels",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Quantity = c.Int(nullable: false),
+                        ProductName = c.String(),
+                        Image = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.WishLists",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        Quantity = c.String(),
+                        WishListId = c.String(maxLength: 128),
+                        Quantity = c.Int(nullable: false),
                         ProductId = c.String(maxLength: 128),
                         CustomerId = c.String(maxLength: 128),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
@@ -166,25 +215,16 @@
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Customers", t => t.CustomerId)
                 .ForeignKey("dbo.Products", t => t.ProductId)
+                .ForeignKey("dbo.WishLists", t => t.WishListId)
+                .Index(t => t.WishListId)
                 .Index(t => t.ProductId)
                 .Index(t => t.CustomerId);
             
-            AddColumn("dbo.Products", "Specifications", c => c.String());
-            AddColumn("dbo.Products", "Stock", c => c.String());
-            AddColumn("dbo.Products", "CategoryId", c => c.String());
-            AddColumn("dbo.Products", "SupplierId", c => c.String(maxLength: 128));
-            AddColumn("dbo.Products", "StoreId", c => c.String(maxLength: 128));
-            AddColumn("dbo.Products", "ProductCategory_Id", c => c.String(maxLength: 128));
-            CreateIndex("dbo.Products", "SupplierId");
-            CreateIndex("dbo.Products", "StoreId");
-            CreateIndex("dbo.Products", "ProductCategory_Id");
-            AddForeignKey("dbo.Products", "ProductCategory_Id", "dbo.ProductCategories", "Id");
-            AddForeignKey("dbo.Products", "StoreId", "dbo.Stores", "Id");
-            AddForeignKey("dbo.Products", "SupplierId", "dbo.Suppliers", "Id");
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.WishLists", "WishListId", "dbo.WishLists");
             DropForeignKey("dbo.WishLists", "ProductId", "dbo.Products");
             DropForeignKey("dbo.WishLists", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.OrderItems", "ProductId", "dbo.Products");
@@ -201,6 +241,7 @@
             DropForeignKey("dbo.BasketItems", "BasketId", "dbo.Baskets");
             DropIndex("dbo.WishLists", new[] { "CustomerId" });
             DropIndex("dbo.WishLists", new[] { "ProductId" });
+            DropIndex("dbo.WishLists", new[] { "WishListId" });
             DropIndex("dbo.OrderItems", new[] { "ProductId" });
             DropIndex("dbo.OrderItems", new[] { "OrderId" });
             DropIndex("dbo.Customers", new[] { "BasketId" });
@@ -213,13 +254,8 @@
             DropIndex("dbo.Products", new[] { "SupplierId" });
             DropIndex("dbo.BasketItems", new[] { "ProductId" });
             DropIndex("dbo.BasketItems", new[] { "BasketId" });
-            DropColumn("dbo.Products", "ProductCategory_Id");
-            DropColumn("dbo.Products", "StoreId");
-            DropColumn("dbo.Products", "SupplierId");
-            DropColumn("dbo.Products", "CategoryId");
-            DropColumn("dbo.Products", "Stock");
-            DropColumn("dbo.Products", "Specifications");
             DropTable("dbo.WishLists");
+            DropTable("dbo.WishListItemViewModels");
             DropTable("dbo.Orders");
             DropTable("dbo.OrderItems");
             DropTable("dbo.CustomerAddresses");
@@ -228,6 +264,8 @@
             DropTable("dbo.Couriers");
             DropTable("dbo.Companies");
             DropTable("dbo.Stores");
+            DropTable("dbo.ProductCategories");
+            DropTable("dbo.Products");
             DropTable("dbo.Baskets");
             DropTable("dbo.BasketItems");
         }
