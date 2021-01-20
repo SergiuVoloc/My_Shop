@@ -61,11 +61,13 @@ namespace My_Shop.Web_UI.Controllers
         public ActionResult CheckOut()
         {
             Customer customer = customers.Collection().FirstOrDefault(c => c.Email == User.Identity.Name);
-
+            //Basket basket = baskets.Collection()
+            Console.WriteLine("test");
             if (customer!=null)
             {
                 Order order = new Order()
                 {
+
                     UserId = customer.UserId,
                     FirstName = customer.FirstName,
                     SecondName = customer.SecondName,

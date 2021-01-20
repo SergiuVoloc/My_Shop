@@ -22,11 +22,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) //Hide Admin tab for simple users
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) //Show Admin tab when he is loged
                     {
-                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Wish List", "Index", "WishList")</li>
                     }
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+
+                        <li>@Html.ActionLink("Wish List", "Index", "WishList")</li>
+                    }
+
 
                 </ul>
                 @Html.Partial("_LoginPartial")
