@@ -77,12 +77,12 @@ namespace My_Shop.Services
         public void AddToWishList(HttpContextBase httpContext, string productId)
         {
             WishList wishList = GetWishList(httpContext, true);
-            WishList item = wishList.WishListItems.FirstOrDefault(i => i.ProductId == productId);
+            WishListItem item = wishList.WishListItems.FirstOrDefault(i => i.ProductId == productId);
 
             //if item doesn't the  exist in the WishList
             if (item == null)
             {
-                item = new WishList()
+                item = new WishListItem()
                 {
                     WishListId = wishList.Id,
                     ProductId = productId,
@@ -103,7 +103,7 @@ namespace My_Shop.Services
         public void RemoveFromWishList(HttpContextBase httpContext, string itemId)      
         {
             WishList WishList = GetWishList(httpContext, true);
-            WishList item = WishList.WishListItems.FirstOrDefault(i=>i.Id==itemId);
+            WishListItem item = WishList.WishListItems.FirstOrDefault(i=>i.Id==itemId);
 
             if (item != null)
             {

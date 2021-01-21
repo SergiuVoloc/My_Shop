@@ -27,6 +27,8 @@ namespace My_Shop.Web_UI.Controllers
             return View(orders);
         }
 
+
+
         public ActionResult UpdateOrder(string Id)
         {
             ViewBag.StatusList = new List<string>(){
@@ -37,16 +39,35 @@ namespace My_Shop.Web_UI.Controllers
             };
 
             Order order = orderService.GetOrder(Id);
-            foreach (var item in order.OrderItems) {
-                item.Product = product.Find(item.ProductId);
-            }
-            // foreach order.OrderItems
-            //SelectList iau oate produsele din lista
-            
-
-            //de trimis orderItems dar cu produse impreuna 
             return View(order);
         }
+
+
+
+
+
+
+
+        //public ActionResult UpdateOrder(string Id)
+        //{
+        //    ViewBag.StatusList = new List<string>(){
+        //        "Order Created",
+        //        "Payment Processed",
+        //        "Order Shipped",
+        //        "Order Completed"
+        //    };
+
+        //    Order order = orderService.GetOrder(Id);
+        //    foreach (var item in order.OrderItems) {
+        //        item.Product = product.Find(item.ProductId);
+        //    }
+        //    // foreach order.OrderItems
+        //    //SelectList iau oate produsele din lista
+
+
+        //    //de trimis orderItems dar cu produse impreuna 
+        //    return View(order);
+        //}
 
 
         [HttpPost]

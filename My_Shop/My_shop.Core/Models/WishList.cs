@@ -9,7 +9,6 @@ namespace My_Shop.Core.Models
 {
     public class WishList :BaseEntity
     {
-        public string WishListId { get; set; }
         public int Quantity { get; set; }
 
         public string ProductId { get; set; }
@@ -19,12 +18,11 @@ namespace My_Shop.Core.Models
         public Customer Customer { get; set; }
 
 
-        public  ICollection<WishList> WishListItems { get; set; }
+        public virtual ICollection<WishListItem> WishListItems { get; set; }
 
         public WishList()
         {
-            this.WishListItems = new List<WishList>();
-            this.Id = Guid.NewGuid().ToString();
+            this.WishListItems = new List<WishListItem>();
         }
     }
 }
