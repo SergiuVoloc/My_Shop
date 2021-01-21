@@ -25,10 +25,10 @@ namespace My_Shop.Services
                 baseOrder.OrderItems.Add(new OrderItem()
                 {
                     ProductId = item.Id,
-                    Image = item.Image,
-                    Price = item.Price,
-                    ProductName = item.ProductName,
-                    Quantity = item.Quantity
+                    //Image = item.Image,
+                    //Price = item.Price,
+                    //ProductName = item.ProductName,
+                    //Quantity = item.Quantity
 
                 });
 

@@ -30,10 +30,16 @@
             </dd>
 
             <dt></dt>
-            <dd><a href="@Url.Action("AddToBasket","Basket", new {Id = Model.Id })" class="btn btn-default">Add To Basket</a></dd>
+            @if (Request.IsAuthenticated )
+            {
+
+                <dd><a style="margin-top:10px;" href="@Url.Action("AddToBasket","Basket", new {Id = Model.Id })" class="btn btn-default">Add To Basket</a></dd>
+                <dd><a style="margin-top:10px;" href="@Url.Action("AddToWishList","WishList", new {Id = Model.Id })" class="btn btn-default">Add To Wish List</a></dd>
+
+            }
 
             <dt></dt>
-            <dd>@Html.ActionLink("Back to List", "Index")</dd>
+            <dd style="margin-top:10px;">@Html.ActionLink("Back to List", "Index")</dd>
         </dl>
     </div>
 </div>

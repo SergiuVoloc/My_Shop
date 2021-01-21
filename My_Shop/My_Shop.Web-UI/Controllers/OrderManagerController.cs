@@ -12,10 +12,12 @@ namespace My_Shop.Web_UI.Controllers
     public class OrderManagerController : Controller
     {
         IOrderService orderService;
+        IRepository<Product> product;
 
-        public OrderManagerController(IOrderService OrderService)
+        public OrderManagerController(IOrderService OrderService, IRepository<Product> Product)
         {
             orderService = OrderService;
+            product = Product;
         }
 
         // GET: OrderManager
@@ -35,6 +37,14 @@ namespace My_Shop.Web_UI.Controllers
             };
 
             Order order = orderService.GetOrder(Id);
+            foreach (var item in order.OrderItems) {
+                item.Product = product.Find(item.ProductId);
+            }
+            // foreach order.OrderItems
+            //SelectList iau oate produsele din lista
+            
+
+            //de trimis orderItems dar cu produse impreuna 
             return View(order);
         }
 

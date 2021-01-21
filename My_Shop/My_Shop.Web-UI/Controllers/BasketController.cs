@@ -12,13 +12,15 @@ namespace My_Shop.Web_UI.Controllers
     {
         IBasketService basketService;
         IOrderService orderService;
+        IRepository<Product> product;
         IRepository<Customer> customers;
 
-        public BasketController(IBasketService BasketService, IOrderService orderService, IRepository<Customer> Customers)
+        public BasketController(IBasketService BasketService, IOrderService orderService, IRepository<Customer> Customers, IRepository<Product> Product )
         {
             this.basketService = BasketService;
             this.orderService = orderService;
             this.customers = Customers;
+            this.product = Product;
         }
 
 
@@ -61,7 +63,7 @@ namespace My_Shop.Web_UI.Controllers
         public ActionResult CheckOut()
         {
             Customer customer = customers.Collection().FirstOrDefault(c => c.Email == User.Identity.Name);
-            //Basket basket = baskets.Collection()
+            Product testProduct = product.Find("5b5165dd-7b55-43db-b78f-3022bb60981c");
             Console.WriteLine("test");
             if (customer!=null)
             {
@@ -75,7 +77,13 @@ namespace My_Shop.Web_UI.Controllers
                     State = customer.State,
                     Street = customer.Street,
                     ZipCode = customer.ZipCode,
-                    Email = customer.Email
+                    Email = customer.Email,
+             
+                };
+
+                OrderItem oItem = new OrderItem() {
+                    OrderId = order.Id,
+                    ProductId = testProduct.Id
                 };
                 return View(order);
             }

@@ -15,6 +15,7 @@ Author: Seriu Voloc
     SELECT Name, Description, Price FROM Product WHERE Price = (select min(Price) from Product );
 
 
+
 2. Să se afișeze Denumirea, descrierea, specificările, prețul și diponibilitatea stocului produselor care corespund comaniei Huawei. 
 
     select p.Name, p.Description, p.Specifications, p.Price, p.Stock, c.Name as Company_Name 
@@ -22,6 +23,7 @@ Author: Seriu Voloc
     on p.SupplierId = s.Id
     inner join company c
     on s.CompanyId = c.Id and c.Name like 'Huawei%';
+
 
 
 3. Să se afle și afișeze prețul mediu al produselor Apple din magazin.
@@ -33,12 +35,14 @@ Author: Seriu Voloc
     on s.CompanyId = c.Id and c.Name like 'Huawei%' )
 
 
+
 4. Să se afișeze denumirea și prețul crescător ar produselor care fac parte din categoria SmartPhones și au un preț mai maic de 1100$:
 
     select p.name, p.price, pc.category 
     from product p inner join ProductCategory pc 
     on pc.Id = p.CategoryId where p.price < 1100
     and pc.Category like 'SmartPhones%' order by price
+
 
 
 5. Să se afișeze toate Comenzile care s-au făcut în intervalul 1 ianuarie - 6 ianuarie și au un status de 'Order Completed'
@@ -49,12 +53,14 @@ Author: Seriu Voloc
     and orderstatus like 'Order Completed%'
 
 
+
 6. Să se găsească clienții care au adăugat mai mult de 1 produse în o coșul de cumpărături și să se afișeze anume câte produse au.
 
     select c.firstname, c.secondname, bi.quantity  as Quantity_Of_Products
     from basketItem bi inner join customer c 
     on c.BasketId = bi.BasketId where bi.Quantity > 1
     
+
 
 7. Să se afișeze filialele companiei și detaliice acestora.
 
@@ -63,11 +69,12 @@ Author: Seriu Voloc
     on c.Id = s.CompanyId
 
 
-8. Să se afișeze numele și adresa cumpărătorului care are cele mai multe produse în wish list și numărul acesora.
 
-    select c.firstname, c.secondname, W.quantity  as no_products
-    from wishlist w inner join customer c 
-    on c.Id = w.CustomerId where w.quantity = ( select max(quantity) from wishlist)
+8. Să se afișeze toate companiile care se ocupă de curiereat.
+
+    select Name, Adress, Phone, Iban from company 
+    right join courier cr
+    on company.Id = cr.CompanyId    
 
 
 
@@ -77,6 +84,7 @@ Author: Seriu Voloc
     from company c inner join supplier s
     on c.Id = s.CompanyId
     order by Name asc
+
 
 
 10. Să se afișeze suma produselor cumpărate din cadrul magazinului până la ziua curentă.
@@ -94,12 +102,14 @@ Author: Seriu Voloc
     WHERE City = 'BRIGHTON';
 
 
-12. Să se afișeze vategoria produsului Samsung Galaxy Watch3
+
+12. Să se afișeze categoria produsului Samsung Galaxy Watch3
 
     select p.Name, pc.Category from ProductCategory pc 
     inner join product p 
     on p.CategoryId = pc.Id 
     where p.Name like '%Samsung Galaxy Watch3%' 
+
 
 
 13. Pentru fiecare categorie să se afișeze prețul și numele celui mai scump produs.
@@ -108,6 +118,7 @@ Author: Seriu Voloc
     from ProductCategory cat inner join product p
     on p.CategoryId = cat.Id
     group by cat.category
+
 
 
 14. Afișați e-mailrile utilizatorilor care nu au cumpărat produse Apple:
@@ -120,12 +131,135 @@ Author: Seriu Voloc
         where p.Name not like '%Apple%'
         
 
-15. Să se afișeze toate companiile care se ocupă de curiereat.
+        
+15. Să se afișeze numele și adresa cumpărătorului care are cele mai multe produse în wish list și numărul acesora.
 
-    select Name, Adress, Phone, Iban from company 
-    right join courier cr
-    on company.Id = cr.CompanyId    
-        
-        
-        
-        
+    select c.firstname, c.secondname, W.quantity  as no_products
+    from wishlist w inner join customer c 
+    on c.Id = w.CustomerId where w.quantity = ( select max(quantity) from wishlist)
+
+
+
+
+
+
+
+   ------------- 2 Funcții ---------------
+
+ 1. Să se creze o funcție care să permită aflarea prețului unui anumit produs indicând id-ul acestuia.
+
+    CREATE OR REPLACE FUNCTION get_price
+        (p_id product.Id%Type)
+        RETURN NUMBER
+            IS
+            price_value product.price%TYPE :=0;
+            BEGIN
+                SELECT price
+                INTO price_value
+                FROM product
+                WHERE Id = p_id;
+            RETURN price_value;
+    END get_price;
+
+    --Executarea functiei:
+    begin
+    dbms_output.put_line(get_price(4));
+    end;
+
+
+
+
+
+
+2. Să se creeze o funcție care să permită identificarea prețului pentru livrare pe care terbuie să îl plătească un anumit cumpărător specificat.
+
+
+    CREATE FUNCTION get_shipp_cost(Customer_Id IN NUMBER)
+        RETURN NUMBER
+        IS shipp_cost NUMBER(11,2);
+        BEGIN 
+            SELECT ShippingCost
+            INTO shipp_cost
+            FROM Оrder
+            WHERE UserId = Customer_Id;
+        RETURN(shipp_cost);
+    END;
+ 
+   --Executarea functiei:
+    begin
+    dbms_output.put_line(get_shipp_cost(3));
+    end;
+
+
+
+
+
+
+
+
+   ------------- 2 Proceduri stocate --------------- 
+
+
+ 1. Să se creze o procedură care să permită efectuarea reducerii prețului unui anumit produs.
+
+    CREATE PROCEDURE product_discount (product_Id NUMBER, amount NUMBER) IS
+        BEGIN
+            UPDATE Product SET Price  = price - amount WHERE Id = product_Id;
+        END product_discount;
+
+            --blocul in care se apeleaza procedura
+        DECLARE
+            prod_Id NUMBER(6) := 1;
+            discount NUMBER(6) := 50;
+        BEGIN
+            product_discount(prod_Id, discount); --parametri pozitionali
+    END;
+
+
+
+
+
+
+2. Să se creeze o procedură care să permită ștergerea unui cumpărător din baza de date indicând Id-ul acestuia.
+
+
+    CREATE PROCEDURE remove_customer (Id NUMBER) AS
+    tot_customers NUMBER;
+    BEGIN
+        DELETE FROM customer
+        WHERE customer.Id = remove_customer.Id;
+    tot_customers := tot_customers - 1;
+    END;
+   
+   EXECUTE remove_customer('18');
+
+
+   ------------- Trigger ---------------
+
+
+   CREATE OR REPLACE TRIGGER display_price_changes 
+BEFORE DELETE OR INSERT OR UPDATE ON product 
+FOR EACH ROW 
+WHEN (NEW.ID > 0) 
+DECLARE 
+   price_diff number; 
+BEGIN 
+   price_diff := :NEW.price  - :OLD.price; 
+   dbms_output.put_line('Old price: ' || :OLD.price); 
+   dbms_output.put_line('New price: ' || :NEW.price); 
+   dbms_output.put_line('price difference: ' || price_diff); 
+END; 
+/ 
+
+
+--- to test:
+UPDATE product 
+SET price = price + 50 
+WHERE id = 2; 
+
+OUTPUT:
+1 row(s) updated.
+Old price: 800
+New price: 850
+price difference: 50
+
