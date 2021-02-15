@@ -171,7 +171,8 @@ Author: Seriu Voloc
 
 
 
-2. Să se creeze o funcție care să permită identificarea prețului pentru livrare pe care terbuie să îl plătească un anumit cumpărător specificat.
+2. Să se creeze o funcție care să permită identificarea prețului 
+pentru livrare pe care terbuie să îl plătească un anumit cumpărător specificat.
 
 
     CREATE FUNCTION get_shipp_cost(Customer_Id IN NUMBER)
@@ -234,8 +235,12 @@ Author: Seriu Voloc
    EXECUTE remove_customer('18');
 
 
+
+
    ------------- Trigger ---------------
 
+1. Să se creze un trigger care ne arată valoarea actualizată 
+    odată ce se inserează sau actualizează sau șterge un produs.
 
    CREATE OR REPLACE TRIGGER display_price_changes 
 BEFORE DELETE OR INSERT OR UPDATE ON product 
